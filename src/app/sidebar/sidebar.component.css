@@ -1,0 +1,180 @@
+/* Estilo general del fondo de la página */
+body {
+    background-color: #3e9acc; /* Color de fondo principal */
+    font-family: Arial, sans-serif; /* Fuente general */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Contenedor principal de la página de inicio de sesión */
+  .login-container {
+    max-width: 400px;
+    margin: 50px auto; /* Centrado vertical y horizontal */
+    padding: 30px;
+    border: 2px solid #ddd; /* Borde más delgado */
+    border-radius: 15px; /* Radio de borde más suave */
+    background-color: #fff; /* Color de fondo más claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    position: relative;
+  }
+  
+  /* Contenedor de la imagen/logo */
+  .img-container {
+    max-width: 150px; /* Ancho máximo más ajustado */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 10px;
+    border: 3px solid #271111; /* Borde más delgado */
+    border-radius: 50%; /* Redondear completamente */
+    background-color: #488cdf; /* Color de fondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Estilo del logo */
+  #logo {
+    width: 100px; /* Ancho fijo */
+    height: auto;
+    border-radius: 50%; /* Redondear completamente */
+    border: 2px solid #fff; /* Borde blanco para destacar */
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo del título */
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3e9acc; /* Color del texto */
+    font-size: 24px; /* Tamaño de fuente ajustado */
+  }
+  
+  /* Estilo de los grupos de formularios */
+  .form-group {
+    margin-bottom: 20px; /* Margen más amplio entre campos */
+  }
+  
+  /* Estilo de las etiquetas */
+  label {
+    display: block;
+    margin-bottom: 10px; /* Margen más pequeño */
+    font-family: Arial, sans-serif; /* Fuente más estándar */
+    font-size: 16px; /* Tamaño de fuente estándar */
+    color: #333; /* Color de texto más oscuro */
+  }
+  
+  /* Estilo de los campos de entrada */
+  input {
+    width: 100%;
+    padding: 10px; /* Padding más grande */
+    box-sizing: border-box;
+    border-radius: 25px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde sutil */
+  }
+  
+  /* Estilo del botón */
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3e9acc; /* Color de fondo del botón */
+    color: #fff;
+    border: none;
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 16px; /* Tamaño de fuente estándar */
+    font-family: Arial, sans-serif; /* Fuente estándar */
+    transition: background-color 0.3s ease; /* Transición suave para el hover */
+  }
+  
+  /* Estilo del botón al pasar el ratón */
+  button:hover {
+    background-color: #357ab8; /* Color de fondo más oscuro en hover */
+  }
+  
+  /* Estilo del botón deshabilitado */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed; /* Cursor para indicar que no está disponible */
+  }
+  
+  /* Estilo del enlace de recuperación de contraseña */
+  #RC {
+    padding: 10px;
+    background-color: #fff; /* Color de fondo blanco */
+    color: #3e9acc; /* Color de texto del enlace */
+    cursor: pointer;
+    text-align: right;
+    font-family: Arial, sans-serif; /* Fuente estándar */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    text-decoration: underline; /* Subrayado para indicar que es un enlace */
+  }
+  
+  /* Estilo de la caja de texto del enlace de recuperación de contraseña */
+  .BoxPs {
+    text-align: right;
+    margin-right: 20px; /* Margen más pequeño */
+  }
+  
+  /* Contenedor principal de la página */
+  .main-container {
+    display: flex;
+    height: 100vh; /* Altura completa de la ventana */
+  }
+  
+  /* Barra lateral */
+  .sidebar {
+    width: 250px; /* Ancho fijo para la barra lateral */
+    background-color: #2b2b2b; /* Color de fondo oscuro */
+    color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra para resaltar la barra lateral */
+  }
+  
+  /* Botones del menú de la barra lateral */
+  .menu-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu-button {
+    background-color: #3e9acc;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-button:hover {
+    background-color: #357ab8; /* Color de fondo más oscuro en hover */
+  }
+  
+  /* Botón de cierre de sesión */
+  .logout-button {
+    text-align: center;
+    background-color: #1d6272; /* Color de fondo rojo */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    bottom: 20px;
+    width: calc(25% - 30px); /* Ajusta el ancho para el padding */
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #1cb2d4; /* Color de fondo más oscuro en hover */
+  }
+  
+  /* Contenido principal */
+  .content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5; /* Color de fondo claro */
+  }

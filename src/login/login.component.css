@@ -1,0 +1,86 @@
+body{
+    background-color: #3e9acc;
+}
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 100px;
+    border: 10px solid #ddd;
+    border-radius: 25px;
+    background-color: #f9f9f9;
+    position: relative;
+  }
+  .img-container{
+    max-width: 200px;
+   margin: 0 auto;
+   padding: 5px; 
+   border: 2px solid #271111;
+   border-radius: 50px 25px 50px 25px;
+   background-color: #488cdf;
+   display: flex;
+   flex-direction: column; 
+   align-items: center; 
+   justify-content: center; 
+   text-align: center; 
+  }
+  #logo{
+    text-align: center;
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 50px 25px 50px 25px;  
+    border: 5 xp solid;
+    max-width: 100%; 
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3e9acc;
+  }
+  
+  .form-group {
+    margin-bottom: 2px;
+    
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 50px;
+    font-family: cursive;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 25px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3e9acc;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: cursive;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+#RC{ 
+    padding: 10px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    text-align: right;
+    font-family: cursive;
+}
+.BoxPs{
+text-align: right;
+margin-right:75px;
+}
