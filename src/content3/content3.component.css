@@ -1,0 +1,52 @@
+/* Barra de navegación */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Contenedor de la barra de navegación */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo de la barra de navegación */
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Menú de navegación */
+.navbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+/* Elementos del menú de navegación */
+.navbar-menu li {
+    margin-left: 20px;
+}
+
+/* Enlaces del menú de navegación */
+.navbar-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar-menu a:hover {
+    text-decoration: underline;
+}

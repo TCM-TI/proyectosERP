@@ -1,0 +1,16 @@
+<div class="store-container">
+    <h1>Productos Disponibles</h1>
+    
+    <!-- Contenedor de productos -->
+    <div class="products-grid">
+        <!-- Iterar sobre los productos -->
+        <div *ngFor="let product of products" class="product-card">
+            <img [src]="product.imageUrl" [alt]="product.name">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.price }}</p>
+        </div>
+    </div>
+
+    <!-- Botón para agregar productos -->
+    <button class="add-product-btn" (click)="addProduct()">+</button>
+</div>

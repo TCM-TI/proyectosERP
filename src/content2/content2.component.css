@@ -1,0 +1,90 @@
+/* Estilo para el fondo de la página */
+body {
+    background-color: #222; /* Color de fondo oscuro para toda la página */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal de inventario */
+.inventory-container {
+    padding: 20px;
+    background-color: #333; /* Color de fondo del contenedor principal */
+    color: #fff; /* Color de texto blanco para contraste */
+    border-radius: 20px;
+    margin: 20px auto; /* Centra el contenedor y le da un margen superior e inferior */
+    max-width: 800px; /* Limita el ancho del contenedor principal */
+}
+
+/* Contenedor del formulario */
+.form-container {
+    margin-bottom: 20px;
+}
+
+/* Estilo para los grupos del formulario */
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Estilo para los inputs */
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: 1px solid #555; /* Color de borde oscuro */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #444; /* Color de fondo oscuro para inputs */
+    color: #fff; /* Color de texto blanco dentro del input */
+}
+
+/* Estilo para el botón de agregar persona */
+.add-person-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Estilo para el botón de agregar persona al pasar el ratón */
+.add-person-btn:hover {
+    background-color: #45a049;
+}
+
+/* Lista de personas */
+.people-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Elementos de la lista de personas */
+.people-list li {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #555; /* Color de borde oscuro */
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444; /* Color de fondo oscuro para cada item */
+}
+
+/* Botón de eliminar */
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Estilo para el botón de eliminar al pasar el ratón */
+.delete-btn:hover {
+    background-color: #e31e12;
+}
