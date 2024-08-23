@@ -1,13 +1,12 @@
-<div class="main-container">
-    <div class="sidebar">
-      <div class="menu-buttons">
-        <button class="menu-button" (click)="Inicio()">Inicio</button>
-        <button class="menu-button" (click)="Inventario()">Inventario</button>
-        <button class="menu-button" (click)="Personal()">Personal</button>
-        <button class="menu-button" (click)="Proximo()">-----</button>
-      </div>
-      <button class="logout-button" (click)="onLogout()">Logout</button>
-    </div>
-    <div class="content">
+<div class="sidebar">
+  <button class="menu-toggle">☰</button>
+  <div class="menu-buttons">
+    <a class="menu-button" routerLink="content1" routerLinkActive="active">Inicio</a>
+    <a class="menu-button" routerLink="content2" routerLinkActive="active">Inventario</a>
+    <a class="menu-button" routerLink="content3" routerLinkActive="active">Personal</a>
+    <a class="menu-button" routerLink="content4" routerLinkActive="active">-----</a>
+    <div class="menu-logout">
+      <a class="logout-button" routerLink="/login" routerlinkActive="active">Logout</a>
     </div>
   </div>
+</div>

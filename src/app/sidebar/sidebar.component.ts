@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContenidoCentralComponent } from '../contenido-central/contenido-central.component';
+import { Content1Component } from '../../content1/content1.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [],
+  imports: [Content1Component],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
