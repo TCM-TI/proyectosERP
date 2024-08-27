@@ -1,12 +1,20 @@
-<div class="sidebar">
-  <button class="menu-toggle">☰</button>
-  <div class="menu-buttons">
-    <a class="menu-button" routerLink="content1" routerLinkActive="active">Inicio</a>
-    <a class="menu-button" routerLink="content2" routerLinkActive="active">Inventario</a>
-    <a class="menu-button" routerLink="content3" routerLinkActive="active">Personal</a>
-    <a class="menu-button" routerLink="content4" routerLinkActive="active">-----</a>
-    <div class="menu-logout">
-      <a class="logout-button" routerLink="/login" routerlinkActive="active">Logout</a>
-    </div>
+<aside class="sidebar bg-light p-3">
+  <button class="btn btn-primary w-100 mb-4" (click)="toggleMenu()">☰</button>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="content4" routerLinkActive="active">Servers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="content2" routerLinkActive="active">Usuarios</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="content3" routerLinkActive="active">Sucursales</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="content1" routerLinkActive="active">Empleados</a>
+    </li>
+  </ul>
+  <div class="mt-auto">
+    <a class="btn btn-danger w-100" routerLink="/login" routerLinkActive="active">Logout</a>
   </div>
-</div>
+</aside>

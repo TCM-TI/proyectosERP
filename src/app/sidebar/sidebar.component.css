@@ -1,56 +1,101 @@
-/* Estilo general del contenedor de la barra lateral */
+/* General body and html settings */
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #133e50; /* Color de fondo general */
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333; /* Fondo del header */
+  color: #fff; /* Color del texto del header */
+  z-index: 1001; /* Asegúrate de que esté encima del sidebar */
+  padding: 1rem;
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+}
+
+/* Footer Styles */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* Fondo claro para el pie de página */
+  color: #000; /* Color del texto del footer */
+  z-index: 1001; /* Asegúrate de que esté encima del sidebar */
+  padding: 1rem;
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+}
+
+/* Sidebar Styles */
 .sidebar {
-  width: 250px; /* Ajusta el ancho según sea necesario */
-  background-color: #2a2a2a; /* Color oscuro para el fondo de la barra lateral */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 90vh; /* Altura completa de la ventana */
+  position: fixed; /* Fijo en la pantalla */
+  top: 60px; /* Alineado con el header */
+  bottom: 60px; /* Alineado con el footer */
+  left: 0; /* Mantén el sidebar a la izquierda */
+  width: 250px; /* Ancho del sidebar */
+  background-color: #1a1a1a; /* Fondo oscuro del sidebar */
+  color: #f7f7f7; /* Color del texto */
+  overflow-y: auto; /* Permite scroll si es necesario */
+  display: flex; /* Flexbox para el diseño */
+  flex-direction: column; /* Organiza los elementos en una columna */
+  z-index: 1000; /* Debajo del header y del footer */
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
 }
 
-/* Estilo de los botones de menú */
-.menu-button {
-  display: block;
+/* Main content area */
+main {
+  margin-left: 250px; /* Deja espacio para el sidebar */
+  padding-top: 60px; /* Evita que el contenido se superponga con el header */
+  padding-bottom: 60px; /* Evita que el contenido se superponga con el footer */
+  overflow-y: auto; /* Permite scroll si es necesario */
+}
+
+/* Botón para alternar el menú */
+.btn-primary {
+  font-size: 1.25rem; /* Tamaño de fuente */
+  padding: 10px; /* Espaciado interno */
+  background-color: #3b4855; /* Color de fondo del botón */
+  border: none;
+  color: #000000; /* Color del texto */
+}
+
+/* Enlaces del sidebar */
+.nav-link {
+  color: #186e9a; /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
+  padding: 10px 15px; /* Espaciado interno */
+  display: block; /* Bloque para el padding */
+}
+
+.nav-link:hover {
+  color: #fdfdfd; /* Color del texto en hover */
+  background-color: #333; /* Fondo en hover */
+}
+
+/* Botón de Logout */
+.btn-danger {
+  font-size: 1rem; /* Tamaño de fuente */
+  padding: 10px; /* Espaciado interno */
+  background-color: #2c8ebf; /* Color de fondo del botón */
+  border: none;
+  color: #ffffff; /* Color del texto */
+  margin-top: auto; /* Empuja el botón al fondo del sidebar */
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  display: none;
   width: 100%;
-  padding: 10px;
-  background-color: #3e9acc; /* Color de fondo para los botones */
-  color: white;
-  text-align: center;
-  border-radius: 40px; /* Bordes redondeados */
-  text-decoration: none; /* Quitar subrayado */
-  font-family: cursive;
-  margin-bottom: 10px; /* Espacio entre los botones */
-  font-weight: bold; /* Hacer el texto negrita */
-  transition: background-color 0.3s ease; /* Transición para el cambio de color */
-}
-
-.menu-button:hover {
-  background-color: #357ab9; /* Color de fondo en hover */
-}
-
-/* Estilo del botón de logout */
-.logout-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #555; /* Color oscuro para el fondo */
-  color: white;
-  text-align: center;
-  border-radius: 40px; /* Bordes redondeados */
-  text-decoration: none; /* Quitar subrayado */
-  font-family: cursive;
-  font-weight: bold; /* Hacer el texto negrita */
-  margin-top: auto; /* Mover el botón de logout al final */
-}
-
-.logout-button:hover {
-  background-color: #333; /* Color de fondo en hover */
-}
-.menu-logout{
-  margin-top: auto;
-}
-
-/* Estilo para la clase activa */
-.active {
-  background-color: #357ab9; /* Color para el estado activo */
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo más oscuro */
+  z-index: 900; /* Asegúrate de que esté debajo del sidebar */
 }

@@ -1,9 +1,9 @@
-.pie-pagina {
-    background-color: #34495e;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-  }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  color: #000;
+  z-index: 800; /* Menor que el sidebar y el header */
+}

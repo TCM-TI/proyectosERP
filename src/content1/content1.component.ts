@@ -1,29 +1,38 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importa el CommonModule
+import { CommonModule } from '@angular/common'; // Importa CommonModule para usar pipes como 'date'
+import { FormsModule } from '@angular/forms'; // Importa FormsModule para usar ngModel
 
 @Component({
   selector: 'app-content1',
   standalone: true,
-  imports: [CommonModule], // Asegúrate de importar CommonModule
+  imports: [CommonModule, FormsModule], // Asegúrate de que FormsModule está aquí
   templateUrl: './content1.component.html',
-  styleUrls: ['./content1.component.css'] // Corregido: styleUrls en plural
+  styleUrls: ['./content1.component.css']
 })
 export class Content1Component {
+  showAddUserForm = false;
+  people: Array<{ id: string, name: string, address: string, dni: string, entryDate: Date, gender: string, status: string }> = [];
+  newPerson = {
+    id: '',
+    name: '',
+    address: '',
+    dni: '',
+    entryDate: new Date(),
+    gender: 'male',
+    status: 'active'
+  };
 
-  // Array para manejar la lista de productos
-  products = [
-    { name: 'Producto 1', price: '$10.00', imageUrl: 'path/to/product1.jpg' },
-    // Añadir más productos si lo deseas
-  ];
-
-  // Método para agregar un nuevo producto
-  addProduct() {
-    const newProduct = {
-      name: 'Nuevo Producto',
-      price: '$20.00',
-      imageUrl: 'path/to/new-product.jpg'
+  addPerson() {
+    this.people.push({ ...this.newPerson });
+    this.newPerson = {
+      id: '',
+      name: '',
+      address: '',
+      dni: '',
+      entryDate: new Date(),
+      gender: 'male',
+      status: 'active'
     };
-
-    this.products.push(newProduct);
+    this.showAddUserForm = false;
   }
 }

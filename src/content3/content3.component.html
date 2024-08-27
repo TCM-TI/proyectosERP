@@ -1,18 +1,39 @@
 <div class="container">
-    <h1>Registrar Sucursal</h1>
-    <form id="branch-form">
-      <label for="branch-name">Nombre de la Sucursal:</label>
-      <input type="text" id="branch-name" name="branch-name" required>
-      
-      <label for="branch-address">Dirección:</label>
-      <input type="text" id="branch-address" name="branch-address" required>
-      
-      <label for="branch-phone">Teléfono:</label>
-      <input type="tel" id="branch-phone" name="branch-phone" required>
-      
-      <label for="branch-email">Correo Electrónico:</label>
-      <input type="email" id="branch-email" name="branch-email">
-      
-      <button type="submit">Registrar Sucursal</button>
-    </form>
+  <h1>Registrar Sucursal</h1>
+  <form id="branch-form" (ngSubmit)="onSubmit()">
+    <label for="branch-id">ID de la Sucursal:</label>
+    <input type="text" id="branch-id" name="branch-id" [(ngModel)]="branchId" required>
+    
+    <label for="branch-name">Nombre de la Sucursal:</label>
+    <input type="text" id="branch-name" name="branch-name" [(ngModel)]="branchName" required>
+    
+    <label for="branch-address">Dirección:</label>
+    <input type="text" id="branch-address" name="branch-address" [(ngModel)]="branchAddress" required>
+    
+    <button type="submit">Registrar Sucursal</button>
+  </form>
+
+  <div *ngIf="branches.length > 0">
+    <h2>Sucursales Registradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Dirección</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let branch of branches">
+          <td>{{ branch.id }}</td>
+          <td>{{ branch.name }}</td>
+          <td>{{ branch.address }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+  <button class="add-branch-btn" (click)="showForm = !showForm">
+    {{ showForm ? 'Ocultar Formulario' : 'Mostrar Formulario' }}
+  </button>
+</div>

@@ -1,0 +1,68 @@
+/* Estilo para el fondo de la página */
+body {
+    background-color: #222; /* Color de fondo oscuro para toda la página */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal del formulario */
+.container {
+    padding: 20px;
+    background-color: #333; /* Color de fondo oscuro para el contenedor del formulario */
+    color: #fff; /* Color de texto blanco para contraste */
+    border-radius: 10px; /* Radios de borde sutiles */
+    max-width: 600px; /* Limita el ancho del contenedor */
+    margin: 20px auto; /* Centra el contenedor y le da un margen superior e inferior */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para el contenedor */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el título del formulario */
+h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Margen inferior de 20px para separar del formulario */
+    color: #f5f5f5; /* Color blanco grisáceo para el título */
+}
+
+/* Estilo para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los elementos del formulario */
+}
+
+/* Estilo para las etiquetas del formulario */
+label {
+    font-weight: bold;
+    margin-bottom: 5px; /* Margen inferior para separar de los inputs */
+}
+
+/* Estilo para los inputs del formulario */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555; /* Color de borde oscuro */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #444; /* Color de fondo oscuro para inputs */
+    color: #fff; /* Color de texto blanco dentro del input */
+}
+
+/* Estilo para el botón de registro */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Tamaño del texto para mejor visibilidad */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+    align-self: center; /* Centra el botón horizontalmente */
+}
+
+/* Estilo para el botón de registro al pasar el ratón */
+button:hover {
+    background-color: #45a049;
+}

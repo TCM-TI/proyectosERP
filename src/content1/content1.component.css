@@ -1,75 +1,86 @@
-/* Fondo de la página */
-body {
-    background-color: #121212; /* Fondo oscuro general */
-    color: #e0e0e0; /* Texto en color claro */
-    font-family: Arial, sans-serif; /* Fuente general */
-    margin: 0;
-    padding: 0;
-}
-
-/* Contenedor principal */
-.store-container {
-    width: 80%;
-    margin: 20px auto #ddd; /* Margen automático horizontal y margen superior/inferior de 20px */
+/* Estilo del contenedor principal */
+.container {
+    background-color: #333; /* Fondo oscuro para el contenedor */
+    color: #fff; /* Texto blanco para contraste */
     padding: 20px;
-    background-color: #1e1e1e; /* Fondo oscuro para el contenedor de productos */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para resaltar el contenedor */
+    margin: 20px auto;
+    max-width: 800px;
+    position: relative; /* Para posicionar el botón emergente */
 }
 
-/* Título de la sección */
-h1 {
-    text-align: center;
-    margin-bottom: 20px; /* Margen inferior de 20px para separar del contenido siguiente */
-    color: #f5f5f5; /* Color blanco grisáceo para el título */
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-/* Grid de productos */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px; /* Espacio entre las tarjetas de productos */
+table, th, td {
+    border: 1px solid #555; /* Borde oscuro para la tabla */
 }
 
-/* Estilo para las tarjetas de productos */
-.product-card {
-    border: 1px solid #333; /* Borde oscuro para las tarjetas */
-    border-radius: 10px;
+th, td {
     padding: 10px;
-    text-align: center;
-    background-color: #2c2c2c; /* Fondo oscuro para las tarjetas de productos */
-    transition: box-shadow 0.3s ease;
-    color: #e0e0e0; /* Color claro para el texto dentro de las tarjetas */
+    text-align: left;
 }
 
-.product-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada al pasar el ratón */
+th {
+    background-color: #444; /* Fondo oscuro para los encabezados */
 }
 
-/* Imagen de los productos */
-.product-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-/* Botón para agregar productos */
-.add-product-btn {
-    position: fixed;
-    bottom: 20px;
+/* Estilo del botón para agregar nuevo usuario */
+.add-user-btn {
+    position: absolute; /* Posiciona el botón en la parte derecha */
     right: 20px;
-    background-color: #28a5a7; /* Color verde brillante */
+    top: 20px;
+    background-color: #007bff; /* Color azul para el botón */
     color: #fff;
     border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
 }
 
-.add-product-btn:hover {
-    background-color: #218838; /* Verde más oscuro al pasar el ratón */
+/* Estilo del botón al pasar el ratón */
+.add-user-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo del formulario emergente */
+.form-popup {
+    position: absolute; /* Posiciona el formulario emergente */
+    top: 60px; /* Ajusta la posición según sea necesario */
+    right: 20px;
+    background-color: #444; /* Fondo oscuro para el formulario */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para resaltar el formulario */
+    width: 300px;
+}
+
+/* Estilo de los campos del formulario */
+.form-popup input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+    border: 1px solid #555; /* Borde oscuro */
+    border-radius: 4px;
+    background-color: #333; /* Fondo oscuro para los campos */
+    color: #fff; /* Texto blanco dentro de los campos */
+}
+
+/* Estilo del botón de enviar del formulario emergente */
+.form-popup button {
+    background-color: #4CAF50; /* Color verde para el botón */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Estilo del botón de enviar al pasar el ratón */
+.form-popup button:hover {
+    background-color: #45a049;
 }

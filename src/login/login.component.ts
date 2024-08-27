@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   username: string = '';
@@ -21,5 +21,12 @@ export class LoginComponent {
     } else {
       alert('Las credenciales no son correctas');
     }
+  }
+
+  onLogout() {
+    // Aquí puedes manejar la lógica de cierre de sesión
+    console.log('User logged out');
+    // Redirige a la página de inicio o al login
+    this.router.navigate(['/login']); // Asegúrate de que '/login' sea la ruta correcta
   }
 }
