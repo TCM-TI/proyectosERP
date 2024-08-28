@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsModule
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-content3',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Incluye FormsModule aquí
+  imports: [CommonModule, FormsModule],
   templateUrl: './content3.component.html',
   styleUrls: ['./content3.component.css']
 })
@@ -14,7 +14,8 @@ export class Content3Component {
   branchName: string = '';
   branchAddress: string = '';
   branches: { id: number; name: string; address: string }[] = [];
-  showForm: boolean = true; // Agregado para el control del formulario
+  showForm: boolean = false; // Agregado para el control del formulario
+  searchTerm: string = ''; // Agregado para el campo de búsqueda
 
   onSubmit() {
     if (this.branchName && this.branchAddress) {
@@ -29,8 +30,17 @@ export class Content3Component {
       this.branchId = null;
       this.branchName = '';
       this.branchAddress = '';
+      this.showForm = false; // Cierra el formulario después de enviar
     } else {
       alert('Por favor complete todos los campos requeridos.');
     }
+  }
+
+  filteredBranches() {
+    const term = this.searchTerm.toLowerCase();
+    return this.branches.filter(branch => 
+      branch.name.toLowerCase().includes(term) || 
+      branch.address.toLowerCase().includes(term)
+    );
   }
 }

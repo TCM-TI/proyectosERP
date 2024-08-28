@@ -8,20 +8,31 @@ body {
 /* Contenedor principal de inventario */
 .inventory-container {
     padding: 20px;
-    background-color: #333; /* Color de fondo del contenedor principal */
-    color: #fff; /* Color de texto blanco para contraste */
-    border-radius: 10px; /* Radios de borde más sutiles */
-    margin: 20px auto; /* Centra el contenedor y le da un margen superior e inferior */
-    max-width: 800px; /* Limita el ancho del contenedor principal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para el contenedor principal */
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    border-radius: 10px;
+    margin: 0; /* Elimina el margen para que se alinee con los bordes */
+    max-width: none; /* Ocupa todo el espacio disponible */
+    width: calc(100% - 250px); /* Deja espacio para el sidebar */
+    height: calc(100vh - 120px); /* Ocupa todo el alto disponible menos header y footer */
+    box-shadow: none; /* Elimina la sombra si se superpone con otros elementos */
+    position: absolute;
+    top: 60px; /* Alineado con el header */
+    left: 250px; /* Alineado con el sidebar */
+    overflow-y: auto; /* Scroll si es necesario */
 }
 
-/* Contenedor del formulario */
-.form-container {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #444; /* Color de fondo más oscuro para el contenedor del formulario */
+/* Estilo para el formulario emergente */
+.form-popup {
+    padding: 20px;
+    background-color: #444; /* Fondo oscuro */
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el formulario */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    width: calc(100% - 40px); /* Ocupa casi todo el ancho de la pantalla */
 }
 
 /* Estilo para los grupos del formulario */
@@ -32,7 +43,8 @@ body {
 /* Estilo para los inputs */
 input[type="text"],
 input[type="number"],
-input[type="email"] {
+input[type="email"],
+select {
     width: 100%;
     padding: 10px;
     margin: 5px 0 10px 0;
@@ -42,6 +54,22 @@ input[type="email"] {
     box-sizing: border-box;
     background-color: #555; /* Color de fondo oscuro para inputs */
     color: #fff; /* Color de texto blanco dentro del input */
+}
+
+/* Estilo para el botón de agregar persona */
+.add-person {
+    background-color: #3dc8b8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Aumenta el tamaño del texto para mejor visibilidad */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.add-person:hover {
+    background-color: #2d9c87;
 }
 
 /* Estilo para el botón de agregar persona */
@@ -61,24 +89,48 @@ input[type="email"] {
     background-color: #45a049;
 }
 
-/* Lista de personas */
-.people-list ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+/* Estilo para el botón de cerrar el popup */
+.close-popup-btn {
+    background-color: #d74202;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Aumenta el tamaño del texto para mejor visibilidad */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
 }
 
-/* Elementos de la lista de personas */
-.people-list li {
+.close-popup-btn:hover {
+    background-color: #c6391b;
+}
+
+/* Lista de personas en tabla */
+.people-list {
+    margin-top: 20px;
+}
+
+.people-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.people-list th, .people-list td {
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #555; /* Color de borde oscuro */
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #444; /* Color de fondo oscuro para cada item */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para cada item */
+    text-align: left;
+    border-bottom: 1px solid #555; /* Color de borde oscuro */
+}
+
+.people-list th {
+    background-color: #444; /* Fondo oscuro para los encabezados */
+}
+
+.people-list tr:nth-child(even) {
+    background-color: #555; /* Color de fondo alternante para las filas */
+}
+
+.people-list tr:hover {
+    background-color: #666; /* Color de fondo al pasar el ratón */
 }
 
 /* Botón de eliminar */
@@ -96,4 +148,18 @@ input[type="email"] {
 /* Estilo para el botón de eliminar al pasar el ratón */
 .delete-btn:hover {
     background-color: #e31e12;
+}
+
+/* Estilo para el filtro de grupos desplegable */
+.group-filter {
+    margin-top: 10px;
+}
+
+.group-filter select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555; /* Color de borde oscuro */
+    border-radius: 4px;
+    background-color: #555; /* Color de fondo oscuro */
+    color: #fff; /* Color de texto blanco */
 }

@@ -11,11 +11,18 @@ body {
     background-color: #333; /* Color de fondo oscuro para el contenedor del formulario */
     color: #fff; /* Color de texto blanco para contraste */
     border-radius: 10px; /* Radios de borde sutiles */
-    max-width: 600px; /* Limita el ancho del contenedor */
-    margin: 20px auto; /* Centra el contenedor y le da un margen superior e inferior */
+    max-width: calc(100% - 250px); /* Ajusta el ancho menos el sidebar */
+    margin: 0; /* Quita los márgenes para ajustarse al límite */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para el contenedor */
     display: flex;
     flex-direction: column;
+    position: absolute; /* Posiciona el contenedor de forma absoluta */
+    top: 60px; /* Espacio desde el header */
+    bottom: 60px; /* Espacio hasta el footer */
+    left: 250px; /* Espacio desde el sidebar */
+    right: 0; /* Ajusta al borde derecho */
+    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
+    overflow-y: auto; /* Permite scroll si el contenido es demasiado alto */
 }
 
 /* Estilo para el título del formulario */
@@ -51,7 +58,7 @@ input[type="text"] {
 
 /* Estilo para el botón de registro */
 button {
-    background-color: #4CAF50;
+    background-color: #27a1bf;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -65,4 +72,58 @@ button {
 /* Estilo para el botón de registro al pasar el ratón */
 button:hover {
     background-color: #45a049;
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Estilo para las celdas y filas de la tabla */
+table, th, td {
+    border: 1px solid #555; /* Borde oscuro para la tabla */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Estilo para los encabezados de la tabla */
+th {
+    background-color: #444; /* Fondo oscuro para los encabezados */
+}
+
+/* Estilo para el formulario emergente */
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #444; /* Fondo oscuro para el formulario */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el formulario */
+    width: 300px;
+    z-index: 1000; /* Asegura que el formulario emergente esté sobre otros elementos */
+}
+
+/* Estilo del botón de cerrar en el formulario emergente */
+#close-popup-btn {
+    background-color: #f44336; /* Color rojo para el botón de cerrar */
+    color: #fff
+
+;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Estilo del botón de cerrar al pasar el ratón */
+#close-popup-btn:hover {
+    background-color: #e31e12;
 }

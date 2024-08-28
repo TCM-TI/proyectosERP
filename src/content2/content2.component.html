@@ -1,34 +1,80 @@
 <div class="inventory-container">
-    <h1>Inventario de Personas</h1>
-  
-    <!-- Formulario para agregar personas -->
-    <div class="form-container">
-      <h2>Agregar Nueva Persona</h2>
-      <form (ngSubmit)="addPerson()">
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <input type="text" id="name" [(ngModel)]="person.name" name="name" required />
+  <h1>Inventario de Usuarios</h1>
+
+  <!-- Botón para abrir el formulario emergente -->
+  <button (click)="openPopup()" class="add-person">Agregar un nuevo usuario</button>
+
+  <!-- Formulario emergente para agregar personas -->
+  <div *ngIf="isPopupOpen" class="form-popup form-container">
+    <h2>Agregar Persona</h2>
+    <form (ngSubmit)="addPerson()">
+      <div class="form-group">
+        <label for="popup-username">Nombre de Usuario:</label>
+        <input type="text" id="popup-username" [(ngModel)]="person.username" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="popup-name">Nombre:</label>
+        <input type="text" id="popup-name" [(ngModel)]="person.name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="popup-status">Estado:</label>
+        <select id="popup-status" [(ngModel)]="person.status" name="status" required>
+          <option value="active">Activo</option>
+          <option value="inactive">Inactivo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Grupo:</label>
+        <div *ngFor="let role of roles">
+          <input type="checkbox" [value]="role" (change)="onGroupChange($event)" [checked]="person.group.includes(role)" />
+          <label>{{ role }}</label>
         </div>
-        <div class="form-group">
-          <label for="age">Edad:</label>
-          <input type="number" id="age" [(ngModel)]="person.age" name="age" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Correo Electrónico:</label>
-          <input type="email" id="email" [(ngModel)]="person.email" name="email" required />
-        </div>
-        <button type="submit" class="add-person-btn">Agregar Persona</button>
-      </form>
-    </div>
-  
-    <!-- Lista de personas inventariadas -->
-    <div class="people-list">
-      <h2>Personas Inventariadas</h2>
-      <ul>
-        <li *ngFor="let person of people; let i = index">
-          {{ person.name }} - {{ person.age }} años - {{ person.email }}
-          <button (click)="deletePerson(i)" class="delete-btn">Eliminar</button>
-        </li>
-      </ul>
-    </div>
+      </div>
+      <button type="submit" class="add-person-btn">Agregar Persona</button>
+      <button type="button" class="close-popup-btn" (click)="closePopup()">Cerrar</button>
+    </form>
   </div>
+
+  <!-- Campo de búsqueda y filtros -->
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar personas por nombre..." />
+    <select [(ngModel)]="selectedStatus">
+      <option value="">Todos los estados</option>
+      <option value="active">Activo</option>
+      <option value="inactive">Inactivo</option>
+    </select>
+    <!--<div class="group-filter">
+      <label>Filtrar por Grupo:</label>
+      <select (change)="onGroupFilterChange($event)" multiple>
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+    </div>-->
+  </div>
+
+  <!-- Lista de personas inventariadas -->
+  <div class="people-list">
+    <h2>Personas Inventariadas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre de Usuario</th>
+          <th>Nombre</th>
+          <th>Estado</th>
+          <th>Grupo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of filteredPeople(); let i = index">
+          <td>{{ person.id }}</td>
+          <td>{{ person.username }}</td>
+          <td>{{ person.name }}</td>
+          <td>{{ person.status }}</td>
+          <td>{{ person.group.join(', ') }}</td>
+          <td><button (click)="deletePerson(i)" class="delete-btn">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

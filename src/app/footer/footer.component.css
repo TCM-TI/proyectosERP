@@ -3,7 +3,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #f8f9fa;
+  background-color: #304963;
   color: #000;
   z-index: 800; /* Menor que el sidebar y el header */
 }

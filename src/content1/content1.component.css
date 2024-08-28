@@ -1,13 +1,23 @@
 /* Estilo del contenedor principal */
+/* Estilo del contenedor principal */
 .container {
     background-color: #333; /* Fondo oscuro para el contenedor */
-    color: #fff; /* Texto blanco para contraste */
+    color: #0096a4; /* Texto blanco para contraste */
     padding: 20px;
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 800px;
-    position: relative; /* Para posicionar el botón emergente */
+    margin: 0; /* Elimina los márgenes */
+    border-radius: 0; /* Elimina el radio de borde */
+    max-width: none; /* Elimina la restricción de ancho máximo */
+    width: calc(100% - 250px); /* Ajusta el ancho según el sidebar */
+    height: calc(100vh - 120px); /* Ajusta la altura según el header y footer */
+    position: absolute; /* Posiciona el contenedor */
+    top: 60px; /* Alineado con el header */
+    left: 250px; /* Alineado con el sidebar */
+    right: 0; /* Hasta el borde derecho */
+    bottom: 60px; /* Alineado con el footer */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
 }
+
+/* Otros estilos permanecen iguales */
 
 /* Estilo de la tabla */
 table {
@@ -35,7 +45,7 @@ th {
     right: 20px;
     top: 20px;
     background-color: #007bff; /* Color azul para el botón */
-    color: #fff;
+    color: #196960;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -53,6 +63,7 @@ th {
     top: 60px; /* Ajusta la posición según sea necesario */
     right: 20px;
     background-color: #444; /* Fondo oscuro para el formulario */
+    color: #2895ae;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para resaltar el formulario */
@@ -73,7 +84,7 @@ th {
 /* Estilo del botón de enviar del formulario emergente */
 .form-popup button {
     background-color: #4CAF50; /* Color verde para el botón */
-    color: #fff;
+    color: #2895ae;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;

@@ -1,17 +1,29 @@
 <div class="container">
-  <h1>Registrar Sucursal</h1>
-  <form id="branch-form" (ngSubmit)="onSubmit()">
-    <label for="branch-id">ID de la Sucursal:</label>
-    <input type="text" id="branch-id" name="branch-id" [(ngModel)]="branchId" required>
-    
-    <label for="branch-name">Nombre de la Sucursal:</label>
-    <input type="text" id="branch-name" name="branch-name" [(ngModel)]="branchName" required>
-    
-    <label for="branch-address">Dirección:</label>
-    <input type="text" id="branch-address" name="branch-address" [(ngModel)]="branchAddress" required>
-    
-    <button type="submit">Registrar Sucursal</button>
-  </form>
+  <button (click)="showForm = !showForm">{{ showForm ? 'Ocultar Formulario' : 'Registrar Sucursal' }}</button>
+
+  <!-- Ventana emergente para registrar sucursal -->
+  <div *ngIf="showForm" class="popup">
+    <h2>Registrar Sucursal</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="branch-name">Nombre de la Sucursal:</label>
+        <input type="text" id="branch-name" [(ngModel)]="branchName" name="branchName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="branch-address">Dirección:</label>
+        <input type="text" id="branch-address" [(ngModel)]="branchAddress" name="branchAddress" required>
+      </div>
+
+      <button type="submit">Registrar Sucursal</button>
+      <!--<button type="button" (click)="showForm = false">Cerrar</button>-->
+    </form>
+  </div>
+
+  <!-- Campo de búsqueda -->
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar sucursal..." />
+  </div>
 
   <div *ngIf="branches.length > 0">
     <h2>Sucursales Registradas</h2>
@@ -24,7 +36,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let branch of branches">
+        <tr *ngFor="let branch of filteredBranches()">
           <td>{{ branch.id }}</td>
           <td>{{ branch.name }}</td>
           <td>{{ branch.address }}</td>
@@ -32,8 +44,4 @@
       </tbody>
     </table>
   </div>
-
-  <button class="add-branch-btn" (click)="showForm = !showForm">
-    {{ showForm ? 'Ocultar Formulario' : 'Mostrar Formulario' }}
-  </button>
 </div>

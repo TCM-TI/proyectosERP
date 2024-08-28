@@ -1,15 +1,72 @@
 <div class="container">
   <h1>Registrar Servidor</h1>
-  <form id="server-form">
-    <label for="server-name">Nombre del Servidor:</label>
-    <input type="text" id="server-name" name="server-name" required>
-    
-    <label for="server-ip">IP del Servidor:</label>
-    <input type="text" id="server-ip" name="server-ip" required>
-    
-    <label for="server-location">Ubicación:</label>
-    <input type="text" id="server-location" name="server-location" required>
-    
-    <button type="submit">Registrar Servidor</button>
-  </form>
+
+  <!-- Botón emergente para agregar nuevo servidor -->
+  <button class="add-button" (click)="openPopup()">Agregar Servidor</button>
+
+  <!-- Campo de búsqueda -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      [(ngModel)]="searchQuery" 
+      placeholder="Buscar por nombre, IP, o ubicación" 
+      class="form-control"
+    />
+  </div>
+
+  <!-- Formulario emergente -->
+  <div id="form-popup" class="form-popup" *ngIf="isPopupOpen">
+    <h2>{{ popupTitle }}</h2>
+    <form (ngSubmit)="onPopupSubmit()">
+      <label for="popup-server-name">Nombre del Servidor:</label>
+      <input 
+        type="text" 
+        id="popup-server-name" 
+        name="popup-server-name" 
+        [(ngModel)]="popupServer.name" 
+        required
+      >
+      
+      <label for="popup-server-ip">IP del Servidor:</label>
+      <input 
+        type="text" 
+        id="popup-server-ip" 
+        name="popup-server-ip" 
+        [(ngModel)]="popupServer.ip" 
+        required
+      >
+      
+      <label for="popup-server-location">Ubicación:</label>
+      <input 
+        type="text" 
+        id="popup-server-location" 
+        name="popup-server-location" 
+        [(ngModel)]="popupServer.location" 
+        required
+      >
+      
+      <div class="form-buttons">
+        <button type="submit">{{ popupAction }}</button>
+        <button type="button" id="close-popup-btn" (click)="closePopup()">Cerrar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Tabla de servidores -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>IP</th>
+        <th>Ubicación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let server of filteredServers()">
+        <td>{{ server.name }}</td>
+        <td>{{ server.ip }}</td>
+        <td>{{ server.location }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

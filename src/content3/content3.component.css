@@ -4,8 +4,15 @@
     color: #fff; /* Color de texto blanco para contraste */
     padding: 20px;
     border-radius: 10px;
-    margin: 20px auto;
-    max-width: 800px;
+    margin: 0; /* Quita los márgenes para que se ajuste a los límites */
+    max-width: calc(100% - 250px); /* Ancho máximo menos el ancho del sidebar */
+    position: absolute; /* Posiciona el contenedor relativo a la ventana */
+    top: 60px; /* Ajusta la posición para que comience justo debajo del header */
+    bottom: 60px; /* Ajusta la posición para que termine justo encima del footer */
+    left: 250px; /* Ajusta la posición para que comience justo al lado del sidebar */
+    right: 0; /* Asegura que se ajuste al borde derecho */
+    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
+    overflow-y: auto; /* Permite scroll si el contenido es demasiado alto */
 }
 
 /* Estilo para el formulario */
@@ -32,7 +39,7 @@ input[type="text"], input[type="tel"], input[type="email"] {
 
 /* Estilo para el botón de enviar */
 button {
-    background-color: #4CAF50; /* Color verde para el botón */
+    background-color: #368cb3; /* Color verde para el botón */
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -42,7 +49,7 @@ button {
 
 /* Estilo para el botón de enviar al pasar el ratón */
 button:hover {
-    background-color: #45a049;
+    background-color: #2f6663;
 }
 
 /* Estilo para la tabla */

@@ -1,1 +1,10 @@
-<p>contenido-central works!</p>
+<div *ngIf="todo">
+    <h2>Todo:</h2>
+    <p>ID: {{ todo.id }}</p>
+    <p>Title: {{ todo.title }}</p>
+    <p>Completed: {{ todo.completed }}</p>
+  </div>
+  
+  <div *ngIf="error">
+    <p>{{ error }}</p>
+  </div>

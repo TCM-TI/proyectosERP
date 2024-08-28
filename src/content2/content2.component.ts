@@ -10,28 +10,36 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./content2.component.css']
 })
 export class Content2Component {
-  // Cambiar el tipo de age a number
-  person = {
+  person: Person = {
+    id: 0, // Asignar un valor inicial
+    username: '',
     name: '',
-    age: '',
-    email: ''
+    status: 'active',
+    group: []
   };
 
-  people = [
-    { name: 'Juan Pérez', age: 30, email: 'juan.perez@example.com' },
-    { name: 'Ana Gómez', age: 25, email: 'ana.gomez@example.com' }
+  roles = [
+    'Administrador', 'Técnico', 'Ingeniero', 'Secretario', 'Recursos Humanos', 'Finanzas', 'Soporte', 'Ventas'
   ];
 
+  people: Person[] = [
+    { id: 1, username: 'juanperez', name: 'Juan Pérez', status: 'active', group: ['Administrador'] },
+    { id: 2, username: 'anagomez', name: 'Ana Gómez', status: 'inactive', group: ['Técnico', 'Ingeniero'] }
+  ];
+
+  searchTerm = '';
+  selectedStatus = '';
+  selectedGroup: string[] = [];
+  isPopupOpen = false;
+
+  private nextId = 3; // ID inicial para el siguiente nuevo registro
+
   addPerson() {
-    // Convertir age a number antes de agregar
-    if (this.person.name && this.person.age && this.person.email) {
-      const ageNumber = Number(this.person.age);
-      if (!isNaN(ageNumber)) {
-        this.people.push({ ...this.person, age: ageNumber });
-        this.person = { name: '', age: '', email: '' }; // Limpiar el formulario
-      } else {
-        alert('La edad debe ser un número.');
-      }
+    console.log(this.person); // Verifica los valores de los campos
+    if (this.person.username && this.person.name && this.person.status && this.person.group.length > 0) {
+      this.people.push({ ...this.person, id: this.nextId++ });
+      this.person = { id: 0, username: '', name: '', status: 'active', group: [] }; // Limpiar formulario
+      this.closePopup();
     } else {
       alert('Por favor, completa todos los campos.');
     }
@@ -40,4 +48,45 @@ export class Content2Component {
   deletePerson(index: number) {
     this.people.splice(index, 1);
   }
+
+  openPopup() {
+    this.isPopupOpen = true;
+  }
+
+  closePopup() {
+    this.isPopupOpen = false;
+  }
+
+  filteredPeople() {
+    const lowerSearchTerm = this.searchTerm.toLowerCase();
+    return this.people.filter(person =>
+      (person.id.toString().includes(lowerSearchTerm) || // Buscar por ID
+      person.username.toLowerCase().includes(lowerSearchTerm) || // Buscar por nombre de usuario
+      person.name.toLowerCase().includes(lowerSearchTerm)) && // Buscar por nombre
+      (this.selectedStatus ? person.status === this.selectedStatus : true) &&
+      (this.selectedGroup.length > 0 ? person.group.some(role => this.selectedGroup.includes(role)) : true)
+    );
+  }
+
+  onGroupChange(event: any) {
+    const role = event.target.value;
+    if (event.target.checked) {
+      this.person.group.push(role);
+    } else {
+      this.person.group = this.person.group.filter(group => group !== role);
+    }
+  }
+
+  onGroupFilterChange(event: any) {
+    const selectedOptions = Array.from(event.target.selectedOptions) as HTMLOptionElement[];
+    this.selectedGroup = selectedOptions.map(option => option.value);
+  }
+}
+
+interface Person {
+  id: number;
+  username: string;
+  name: string;
+  status: string;
+  group: string[];
 }

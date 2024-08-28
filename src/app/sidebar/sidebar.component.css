@@ -71,6 +71,7 @@ main {
   text-decoration: none; /* Sin subrayado */
   padding: 10px 15px; /* Espaciado interno */
   display: block; /* Bloque para el padding */
+  border-radius: 20px;
 }
 
 .nav-link:hover {
