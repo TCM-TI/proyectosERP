@@ -1,165 +1,178 @@
-/* Estilo para el fondo de la página */
-body {
-    background-color: #222; /* Color de fondo oscuro para toda la página */
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* Contenedor principal de inventario */
+/* Estilo general para el contenedor de inventario */
 .inventory-container {
     padding: 20px;
-    background-color: #333; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    border-radius: 10px;
-    margin: 0; /* Elimina el margen para que se alinee con los bordes */
-    max-width: none; /* Ocupa todo el espacio disponible */
-    width: calc(100% - 250px); /* Deja espacio para el sidebar */
-    height: calc(100vh - 120px); /* Ocupa todo el alto disponible menos header y footer */
-    box-shadow: none; /* Elimina la sombra si se superpone con otros elementos */
-    position: absolute;
-    top: 60px; /* Alineado con el header */
-    left: 250px; /* Alineado con el sidebar */
-    overflow-y: auto; /* Scroll si es necesario */
+    background-color: #333; /* Color de fondo oscuro para el contenedor */
+    color: #fff; /* Color de texto blanco */
+    border-radius: 10px; /* Radios de borde sutiles */
+    max-width: calc(100% - 250px); /* Ajusta el ancho menos el sidebar */
+    margin: 0; /* Quita los márgenes para ajustarse al límite */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para el contenedor */
+    position: absolute; /* Posiciona el contenedor de forma absoluta */
+    top: 60px; /* Espacio desde el header */
+    bottom: 60px; /* Espacio hasta el footer */
+    left: 250px; /* Espacio desde el sidebar */
+    right: 0; /* Ajusta al borde derecho */
+    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
+    overflow-y: auto; /* Permite scroll si el contenido es demasiado alto */
+}
+
+/* Estilo para el botón "Agregar un nuevo usuario" */
+.add-person {
+    background-color: #27a1bf;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px; /* Margen inferior para separación */
+}
+
+/* Línea de separación debajo del botón "Agregar un nuevo usuario" */
+.add-person + .search-container {
+    border-top: 1px solid #555; /* Línea de separación */
+    margin-top: 20px; /* Espacio superior para separación */
+    padding-top: 20px; /* Espacio superior dentro del contenedor de búsqueda */
+}
+
+/* Estilo para el campo de búsqueda y filtros */
+.search-container {
+    margin-bottom: 20px; /* Margen inferior para separación */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los elementos */
+}
+
+/* Estilo para el campo de búsqueda */
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555; /* Color de borde oscuro */
+    border-radius: 4px;
+    background-color: #444; /* Color de fondo oscuro para el campo de búsqueda */
+    color: #fff; /* Color de texto blanco dentro del campo */
+    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
+}
+
+/* Estilo para el filtro de estado */
+.search-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555; /* Color de borde oscuro */
+    border-radius: 4px;
+    background-color: #444; /* Color de fondo oscuro para el filtro */
+    color: #fff; /* Color de texto blanco dentro del filtro */
+    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
+}
+
+/* Línea de separación debajo del campo de búsqueda */
+.search-container + .people-list {
+    border-top: 1px solid #555; /* Línea de separación */
+    margin-top: 20px; /* Espacio superior para separación */
+    padding-top: 20px; /* Espacio superior dentro del contenedor de lista de personas */
 }
 
 /* Estilo para el formulario emergente */
 .form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #444; /* Fondo oscuro para el formulario */
     padding: 20px;
-    background-color: #444; /* Fondo oscuro */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el formulario */
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    width: calc(100% - 40px); /* Ocupa casi todo el ancho de la pantalla */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el formulario */
+    width: 300px;
+    z-index: 1000; /* Asegura que el formulario emergente esté sobre otros elementos */
 }
 
-/* Estilo para los grupos del formulario */
-.form-group {
-    margin-bottom: 15px;
+/* Estilo para el título del formulario emergente */
+.form-popup h2 {
+    color: #f5f5f5; /* Color blanco grisáceo para el título */
+    margin-bottom: 15px; /* Margen inferior para separación */
 }
 
-/* Estilo para los inputs */
-input[type="text"],
-input[type="number"],
-input[type="email"],
-select {
+/* Estilo para los elementos del formulario emergente */
+.form-popup .form-group {
+    margin-bottom: 15px; /* Margen inferior para separación entre campos */
+}
+
+.form-popup label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px; /* Margen inferior para separar de los inputs */
+}
+
+.form-popup input[type="text"], 
+.form-popup select {
     width: 100%;
     padding: 10px;
-    margin: 5px 0 10px 0;
-    display: inline-block;
     border: 1px solid #555; /* Color de borde oscuro */
     border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #555; /* Color de fondo oscuro para inputs */
-    color: #fff; /* Color de texto blanco dentro del input */
+    background-color: #444; /* Color de fondo oscuro para inputs y selects */
+    color: #fff; /* Color de texto blanco dentro de inputs y selects */
+    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
 }
 
-/* Estilo para el botón de agregar persona */
-.add-person {
-    background-color: #3dc8b8;
+/* Estilo para los botones dentro del formulario emergente */
+.form-popup .form-group button {
+    background-color: #27a1bf;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px; /* Aumenta el tamaño del texto para mejor visibilidad */
-    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-}
-
-.add-person:hover {
-    background-color: #2d9c87;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Espacio entre los botones */
 }
 
 /* Estilo para el botón de agregar persona */
 .add-person-btn {
-    background-color: #4CAF50;
+    background-color: #27a1bf;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px; /* Aumenta el tamaño del texto para mejor visibilidad */
-    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-/* Estilo para el botón de agregar persona al pasar el ratón */
-.add-person-btn:hover {
-    background-color: #45a049;
-}
-
-/* Estilo para el botón de cerrar el popup */
+/* Estilo para el botón de cerrar en el formulario emergente */
 .close-popup-btn {
-    background-color: #d74202;
-    color: white;
-    padding: 10px 20px;
+    background-color: #f44336; /* Color rojo para el botón de cerrar */
+    color: #fff;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px; /* Aumenta el tamaño del texto para mejor visibilidad */
-    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
-}
-
-.close-popup-btn:hover {
-    background-color: #c6391b;
-}
-
-/* Lista de personas en tabla */
-.people-list {
-    margin-top: 20px;
-}
-
-.people-list table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.people-list th, .people-list td {
     padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #555; /* Color de borde oscuro */
-}
-
-.people-list th {
-    background-color: #444; /* Fondo oscuro para los encabezados */
-}
-
-.people-list tr:nth-child(even) {
-    background-color: #555; /* Color de fondo alternante para las filas */
-}
-
-.people-list tr:hover {
-    background-color: #666; /* Color de fondo al pasar el ratón */
-}
-
-/* Botón de eliminar */
-.delete-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
     border-radius: 4px;
-    padding: 5px 10px;
     cursor: pointer;
-    font-size: 14px; /* Tamaño de texto ajustado */
-    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
 }
 
-/* Estilo para el botón de eliminar al pasar el ratón */
-.delete-btn:hover {
+/* Estilo del botón de cerrar al pasar el ratón */
+.close-popup-btn:hover {
     background-color: #e31e12;
 }
 
-/* Estilo para el filtro de grupos desplegable */
-.group-filter {
-    margin-top: 10px;
+/* Estilo para la tabla de personas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.group-filter select {
-    width: 100%;
+/* Estilo para las celdas y filas de la tabla */
+table, th, td {
+    border: 1px solid #555; /* Borde oscuro para la tabla */
+}
+
+th, td {
     padding: 10px;
-    border: 1px solid #555; /* Color de borde oscuro */
-    border-radius: 4px;
-    background-color: #555; /* Color de fondo oscuro */
-    color: #fff; /* Color de texto blanco */
+    text-align: left;
+}
+
+/* Estilo para los encabezados de la tabla */
+th {
+    background-color: #444; /* Fondo oscuro para los encabezados */
 }

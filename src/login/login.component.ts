@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { UserService } from '../app/services/user/user.service'; // Asegúrate de que la ruta sea correcta
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule], // Agrega FormsModule aquí
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -13,10 +14,11 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
 
-  onLogin() {
-    if (this.username === 'admin' && this.password === 'admin') {
+  async onLogin() {
+    const user = this.userService.getUserByUsername(this.username);
+    if (user && this.password === 'admin') { // Aquí podrías usar una lógica más avanzada para la autenticación
       this.router.navigate(['/home']);
     } else {
       alert('Las credenciales no son correctas');
@@ -24,9 +26,7 @@ export class LoginComponent {
   }
 
   onLogout() {
-    // Aquí puedes manejar la lógica de cierre de sesión
-    console.log('User logged out');
-    // Redirige a la página de inicio o al login
-    this.router.navigate(['/login']); // Asegúrate de que '/login' sea la ruta correcta
+    alert('User logged out');
+    this.router.navigate(['/login']); 
   }
 }

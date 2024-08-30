@@ -4,6 +4,9 @@
   <!-- Botón emergente para agregar nuevo servidor -->
   <button class="add-button" (click)="openPopup()">Agregar Servidor</button>
 
+  <!-- Línea de separación entre el botón y el campo de búsqueda -->
+  <div class="separator"></div>
+
   <!-- Campo de búsqueda -->
   <div class="search-container">
     <input 
@@ -13,6 +16,9 @@
       class="form-control"
     />
   </div>
+
+  <!-- Línea de separación entre el campo de búsqueda y la tabla -->
+  <div class="separator"></div>
 
   <!-- Formulario emergente -->
   <div id="form-popup" class="form-popup" *ngIf="isPopupOpen">

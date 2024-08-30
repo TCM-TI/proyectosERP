@@ -24,6 +24,16 @@ body {
     box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
     overflow-y: auto; /* Permite scroll si el contenido es demasiado alto */
 }
+/* Estilo para la línea de separación */
+.separator {
+    border-bottom: 1px solid #555; /* Línea de separación de color oscuro */
+    margin: 20px 0; /* Espaciado arriba y abajo de la línea */
+}
+
+/* Estilo adicional para mayor separación si es necesario */
+.separator-large {
+    margin: 40px 0; /* Mayor espaciado arriba y abajo de la línea */
+}
 
 /* Estilo para el título del formulario */
 h1 {

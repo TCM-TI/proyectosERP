@@ -1,5 +1,6 @@
 <div class="container">
-  <button (click)="showForm = !showForm">{{ showForm ? 'Ocultar Formulario' : 'Registrar Sucursal' }}</button>
+  <h1>Registrar Sucursales</h1>
+  <button (click)="showForm = !showForm" class="add-branch-btn">{{ showForm ? 'Ocultar Formulario' : 'Registrar Sucursal' }}</button>
 
   <!-- Ventana emergente para registrar sucursal -->
   <div *ngIf="showForm" class="popup">
@@ -15,10 +16,18 @@
         <input type="text" id="branch-address" [(ngModel)]="branchAddress" name="branchAddress" required>
       </div>
 
+      <div class="form-group">
+        <label for="branch-status">Estado:</label>
+        <input type="text" id="branch-status" [(ngModel)]="branchStatus" name="branchStatus" required>
+      </div>
+
       <button type="submit">Registrar Sucursal</button>
       <!--<button type="button" (click)="showForm = false">Cerrar</button>-->
     </form>
   </div>
+
+  <!-- Línea de separación -->
+  <div class="separator"></div>
 
   <!-- Campo de búsqueda -->
   <div class="search-container">
@@ -33,6 +42,7 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>Dirección</th>
+          <th>Estado</th> <!-- Añadido el encabezado del estado -->
         </tr>
       </thead>
       <tbody>
@@ -40,6 +50,7 @@
           <td>{{ branch.id }}</td>
           <td>{{ branch.name }}</td>
           <td>{{ branch.address }}</td>
+          <td>{{ branch.status }}</td> <!-- Añadida la columna de estado -->
         </tr>
       </tbody>
     </table>

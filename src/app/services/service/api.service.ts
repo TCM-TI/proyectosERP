@@ -6,12 +6,12 @@ import axios, { AxiosResponse } from 'axios';
 })
 export class ApiService {
 
-  private baseURL = 'https://jsonplaceholder.typicode.com'; // URL base de la API
+  private baseURL = 'https://jsonplaceholder.typicode.com/users/1'; // URL base de JSONPlaceholder
 
   constructor() { }
 
   // Método para hacer una solicitud GET
-  async getData(endpoint: string): Promise<any> {
+  async getData(endpoint: string = ''): Promise<any> {
     try {
       const response: AxiosResponse = await axios.get(`${this.baseURL}/${endpoint}`);
       return response.data;

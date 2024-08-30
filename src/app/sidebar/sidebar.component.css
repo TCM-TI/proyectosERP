@@ -25,7 +25,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #f8f9fa; /* Fondo claro para el pie de página */
+  background-color: #28637d; /* Fondo claro para el pie de página */
   color: #000; /* Color del texto del footer */
   z-index: 1001; /* Asegúrate de que esté encima del sidebar */
   padding: 1rem;

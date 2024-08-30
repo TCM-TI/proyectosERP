@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { FormsModule } from '@angular/forms'; 
-import { Person } from '../app/models/person.model';
 import { ApiService } from '../app/services/service/api.service';
 
 @Component({
@@ -13,20 +12,17 @@ import { ApiService } from '../app/services/service/api.service';
 })
 export class Content1Component implements OnInit {
   showAddUserForm = false;
-  people: Person[] = [];
-  newPerson: Person = {
+  people: any[] = []; // Cambia el tipo a any o ajusta según la estructura de los datos
+  newPerson: any = { // Cambia el tipo a any o ajusta según la estructura de los datos
     id: '',
-    name: '',
-    address: '',
-    dni: '',
-    entryDate: new Date(),
-    gender: 'male',
-    status: 'active'
+    title: '',
+    body: '',
+    userId: 1
   };
 
   // Variables para búsqueda y filtros
   searchQuery = '';
-  selectedGender = '';
+  selectedGender = ''; // Asegúrate de definir esta propiedad
   selectedStatus = '';
   nextId = 1; // Variable para llevar el conteo de los IDs
 
@@ -39,7 +35,7 @@ export class Content1Component implements OnInit {
   // Método para obtener personas desde la API
   async fetchPeople() {
     try {
-      const data = await this.apiService.getData('people'); // Reemplaza 'people' con el endpoint correcto
+      const data = await this.apiService.getData('posts'); // Reemplaza 'posts' con el endpoint correcto
       this.people = data;
     } catch (error) {
       console.error('Error fetching people:', error);
@@ -50,21 +46,16 @@ export class Content1Component implements OnInit {
     this.newPerson.id = this.nextId.toString();
     this.nextId++;
 
-    const index = this.people.findIndex(person => person.id === this.newPerson.id);
-    if (index !== -1) {
-      this.people[index] = { ...this.newPerson };
-    } else {
-      this.people.push({ ...this.newPerson });
-      this.savePerson(this.newPerson); // Guardar la nueva persona en la API
-    }
+    this.people.push({ ...this.newPerson });
+    this.savePerson(this.newPerson); // Guardar la nueva persona en la API
 
     this.resetForm();
   }
 
   // Método para guardar una persona en la API
-  async savePerson(person: Person) {
+  async savePerson(person: any) {
     try {
-      await this.apiService.postData('people', person); // Reemplaza 'people' con el endpoint correcto
+      await this.apiService.postData('posts', person); // Reemplaza 'posts' con el endpoint correcto
     } catch (error) {
       console.error('Error saving person:', error);
     }
@@ -72,14 +63,14 @@ export class Content1Component implements OnInit {
 
   filteredPeople() {
     return this.people.filter(person => {
-      const matchesQuery = person.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+      const matchesQuery = person.title.toLowerCase().includes(this.searchQuery.toLowerCase());
       const matchesGender = this.selectedGender ? person.gender === this.selectedGender : true;
       const matchesStatus = this.selectedStatus ? person.status === this.selectedStatus : true;
       return matchesQuery && matchesGender && matchesStatus;
     });
   }
 
-  editPerson(person: Person) {
+  editPerson(person: any) {
     this.newPerson = { ...person };
     this.showAddUserForm = true;
   }
@@ -91,12 +82,9 @@ export class Content1Component implements OnInit {
   resetForm() {
     this.newPerson = {
       id: '',
-      name: '',
-      address: '',
-      dni: '',
-      entryDate: new Date(),
-      gender: 'male',
-      status: 'active'
+      title: '',
+      body: '',
+      userId: 1
     };
     this.showAddUserForm = false;
   }
