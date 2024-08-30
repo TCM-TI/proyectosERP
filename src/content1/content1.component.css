@@ -1,97 +1,162 @@
 /* Estilo del contenedor principal */
-
 .container {
-    background-color: #333; /* Fondo oscuro para el contenedor */
-    color: #0096a4; /* Texto blanco para contraste */
-    padding: 20px;
-    margin: 0; /* Elimina los márgenes */
-    border-radius: 0; /* Elimina el radio de borde */
-    max-width: none; /* Elimina la restricción de ancho máximo */
-    width: calc(100% - 250px); /* Ajusta el ancho según el sidebar */
-    height: calc(100vh - 120px); /* Ajusta la altura según el header y footer */
-    position: absolute; /* Posiciona el contenedor */
-    top: 60px; /* Alineado con el header */
-    left: 250px; /* Alineado con el sidebar */
-    right: 0; /* Hasta el borde derecho */
-    bottom: 60px; /* Alineado con el footer */
-    box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
+  background-color: #333; /* Fondo oscuro */
+  color: #000000; /* Texto blanco */
+  padding: 20px;
+  margin: 0; /* Elimina márgenes */
+  border-radius: 0; /* Sin bordes redondeados */
+  max-width: none; /* Sin restricción de ancho máximo */
+  width: calc(100% - 250px); /* Ajusta el ancho según el sidebar */
+  height: calc(100vh - 120px); /* Ajusta la altura según el header y footer */
+  position: absolute; /* Posiciona el contenedor */
+  top: 60px; /* Alineado con el header */
+  left: 250px; /* Alineado con el sidebar */
+  right: 0; /* Hasta el borde derecho */
+  bottom: 60px; /* Alineado con el footer */
+  box-sizing: border-box; /* Incluye el padding en el tamaño */
 }
-
-/* Otros estilos permanecen iguales */
 
 /* Estilo de la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+h1 {
+  font-family: 'Mano Imprenta', Brush Script MT; /* Fuente manuscrita */
+  color: #0096a4; /* Color del título */
 }
 
 table, th, td {
-    border: 1px solid #555; /* Borde oscuro para la tabla */
+  border: 1px solid #555; /* Borde oscuro para la tabla */
 }
 
 th, td {
-    padding: 10px;
-    text-align: left;
+  padding: 10px;
+  text-align: left;
 }
 
 th {
-    background-color: #444; /* Fondo oscuro para los encabezados */
+  background-color: #444; /* Fondo oscuro para los encabezados */
+  color: #fff; /* Texto blanco en los encabezados */
 }
 
 /* Estilo del botón para agregar nuevo usuario */
 .add-user-btn {
-    position: absolute; /* Posiciona el botón en la parte derecha */
-    right: 20px;
-    top: 20px;
-    background-color: #007bff; /* Color azul para el botón */
-    color: #196960;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+  position: absolute; /* Posiciona el botón */
+  right: 20px;
+  top: 20px;
+  background-color: #007bff; /* Color azul */
+  color: #fff; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Estilo del botón al pasar el ratón */
 .add-user-btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3; /* Azul más oscuro */
 }
 
 /* Estilo del formulario emergente */
 .form-popup {
-    position: absolute; /* Posiciona el formulario emergente */
-    top: 60px; /* Ajusta la posición según sea necesario */
-    right: 20px;
-    background-color: #444; /* Fondo oscuro para el formulario */
-    color: #2895ae;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para resaltar el formulario */
-    width: 300px;
+  position: absolute; /* Posiciona el formulario */
+  top: 60px; /* Ajusta según sea necesario */
+  right: 20px;
+  background-color: #444; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+  width: 300px;
 }
 
 /* Estilo de los campos del formulario */
 .form-popup input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0 10px;
-    border: 1px solid #555; /* Borde oscuro */
-    border-radius: 4px;
-    background-color: #333; /* Fondo oscuro para los campos */
-    color: #fff; /* Texto blanco dentro de los campos */
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 10px;
+  border: 1px solid #555; /* Borde oscuro */
+  border-radius: 4px;
+  background-color: #333; /* Fondo oscuro para los campos */
+  color: #fff; /* Texto blanco dentro de los campos */
 }
 
 /* Estilo del botón de enviar del formulario emergente */
 .form-popup button {
-    background-color: #4CAF50; /* Color verde para el botón */
-    color: #2895ae;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #4CAF50; /* Verde */
+  color: #fff; /* Texto blanco */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Estilo del botón de enviar al pasar el ratón */
 .form-popup button:hover {
-    background-color: #45a049;
+  background-color: #45a049; /* Verde más oscuro */
+}
+
+/* Estilo para btn editar y eliminar */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo para el botón tipo enlace */
+.btn-link {
+  background: none;
+  color: #007bff;
+  border-color: transparent;
+}
+
+/* Estilo para el botón pequeño */
+.btn-sm {
+  font-size: 12px;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Estilo para el botón con bordes redondeados */
+.btn-rounded {
+  border-radius: 50px;
+}
+
+/* Estilo para el botón en estado hover */
+.btn:hover, .btn:focus {
+  text-decoration: none;
+}
+
+/* Estilo para el botón de "Editar" */
+.btn-edit {
+  background-color: #2ecc71; /* Verde */
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #239b56; /* Verde más oscuro */
+}
+
+/* Estilo para el botón de "Eliminar" */
+.btn-delete {
+  background-color: #f44336; /* Rojo */
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #FF5733; /* Rojo más oscuro */
+}
+
+/*Color del span*/
+span{
+  color: azure;
+  
 }

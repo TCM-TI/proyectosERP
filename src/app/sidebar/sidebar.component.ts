@@ -13,13 +13,13 @@ export class SidebarComponent {
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
-    const sidebar = document.querySelector('.sidebar');
+    const sidebar = document.querySelector('.col-auto') as HTMLElement; // Cambia según la nueva clase del contenedor del sidebar
     const overlay = document.querySelector('.overlay') as HTMLElement;
-
+  
     if (sidebar) {
       sidebar.classList.toggle('visible', this.isOpen);
     }
-
+  
     if (overlay) {
       overlay.style.display = this.isOpen ? 'block' : 'none';
     }

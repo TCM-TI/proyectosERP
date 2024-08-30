@@ -1,17 +1,57 @@
-/* Estilos generales para la aplicación */
-.main-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Ajusta según la altura real del header */
+    
+    z-index: 1002; /* Asegúrate de que esté sobre el sidebar */
+  }
   
-.content-wrapper {
-    display: flex;
-    flex: 1;
-}
+  /* Footer Styles */
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Ajusta según la altura real del footer */
+    background-color: #28637d; /* Fondo para el pie de página */
+    color: #000; /* Color del texto del footer */
+    z-index: 1000; /* Asegúrate de que esté sobre el sidebar */
+    padding: 1rem;
+    box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+  }
   
-
-main {
+  /* Sidebar Styles */
+  .sidebar {
+    position: fixed; /* Fija el sidebar en la pantalla */
+    top: auto; /* Alineado con la parte inferior del header */
+    left: 0;
+    height: calc(100vh - 160px); /* Altura total menos la altura del header y el footer */
+    width: 250px; /* Ajusta el ancho según sea necesario */
+    background-color: #343a40; /* Color de fondo oscuro */
+    color: white; /* Color del texto */
+    overflow: auto; /* Agrega barras de desplazamiento si el contenido es mayor que el sidebar */
+    z-index: 1001; /* Asegúrate de que el sidebar esté sobre otros contenidos */
+  }
+  
+  /* Main Content Styles */
+  main {
+    margin-left: 250px; /* Igual al ancho del sidebar */
     padding: 20px;
-}
+    padding-bottom: 100px; /* Espacio suficiente para el footer */
+    min-height: calc(100vh - 60px - 100px); /* Altura mínima para evitar solapamiento con el header y el footer */
+  }
   
+  /* Opcional: Estilos para el overlay si lo usas */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: none; /* Oculto por defecto */
+    z-index: 999; /* Debe estar debajo del sidebar */
+  }

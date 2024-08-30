@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Registrar Sucursales</h1>
-  <button (click)="showForm = !showForm" class="add-branch-btn">{{ showForm ? 'Ocultar Formulario' : 'Registrar Sucursal' }}</button>
+  <button (click)="showForm = !showForm" class="add-branch-btn">
+    {{ showForm ? 'Ocultar Formulario' : 'Registrar Sucursal' }}
+  </button>
 
   <!-- Ventana emergente para registrar sucursal -->
   <div *ngIf="showForm" class="popup">
@@ -22,7 +24,6 @@
       </div>
 
       <button type="submit">Registrar Sucursal</button>
-      <!--<button type="button" (click)="showForm = false">Cerrar</button>-->
     </form>
   </div>
 
@@ -34,25 +35,24 @@
     <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar sucursal..." />
   </div>
 
-  <div *ngIf="branches.length > 0">
-    <h2>Sucursales Registradas</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Dirección</th>
-          <th>Estado</th> <!-- Añadido el encabezado del estado -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let branch of filteredBranches()">
-          <td>{{ branch.id }}</td>
-          <td>{{ branch.name }}</td>
-          <td>{{ branch.address }}</td>
-          <td>{{ branch.status }}</td> <!-- Añadida la columna de estado -->
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <!-- Tabla de sucursales registradas -->
+  <h2>Sucursales Registradas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Estado</th> <!-- Encabezado del estado -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let branch of filteredBranches()">
+        <td>{{ branch.id }}</td>
+        <td>{{ branch.name }}</td>
+        <td>{{ branch.address }}</td>
+        <td>{{ branch.status }}</td> <!-- Columna de estado -->
+      </tr>
+    </tbody>
+  </table>
 </div>

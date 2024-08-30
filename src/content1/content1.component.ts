@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
-import { FormsModule } from '@angular/forms'; 
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Person } from '../app/models/person.model';
 import { ApiService } from '../app/services/service/api.service';
 
 @Component({
@@ -12,65 +13,97 @@ import { ApiService } from '../app/services/service/api.service';
 })
 export class Content1Component implements OnInit {
   showAddUserForm = false;
-  people: any[] = []; // Cambia el tipo a any o ajusta según la estructura de los datos
-  newPerson: any = { // Cambia el tipo a any o ajusta según la estructura de los datos
+  people: Person[] = [];
+  newPerson: Person = {
     id: '',
-    title: '',
-    body: '',
-    userId: 1
+    name: '',
+    address: '',
+    dni: '',
+    entryDate: new Date(),
+    gender: 'male',
+    status: 'active'
   };
 
-  // Variables para búsqueda y filtros
   searchQuery = '';
-  selectedGender = ''; // Asegúrate de definir esta propiedad
+  selectedGender = '';
   selectedStatus = '';
-  nextId = 1; // Variable para llevar el conteo de los IDs
+  rowsPerPage = 5; // Número fijo de filas por página
+  currentPage = 1;
 
-  constructor(private apiService: ApiService) {} // Inyecta el servicio
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.fetchPeople(); // Cargar los datos al iniciar el componente
+    this.fetchPeople();
   }
 
-  // Método para obtener personas desde la API
   async fetchPeople() {
     try {
-      const data = await this.apiService.getData('posts'); // Reemplaza 'posts' con el endpoint correcto
+      const data = await this.apiService.getData();
       this.people = data;
+      this.updatePagination();
     } catch (error) {
       console.error('Error fetching people:', error);
     }
   }
 
   addPerson() {
-    this.newPerson.id = this.nextId.toString();
-    this.nextId++;
-
-    this.people.push({ ...this.newPerson });
-    this.savePerson(this.newPerson); // Guardar la nueva persona en la API
-
+    if (this.newPerson.id) {
+      this.updatePerson();
+    } else {
+      this.newPerson.id = (this.people.length + 1).toString(); // Generar un nuevo ID
+      this.people.push({ ...this.newPerson });
+      this.savePerson(this.newPerson);
+    }
     this.resetForm();
   }
 
-  // Método para guardar una persona en la API
-  async savePerson(person: any) {
+  async savePerson(person: Person) {
     try {
-      await this.apiService.postData('posts', person); // Reemplaza 'posts' con el endpoint correcto
+      await this.apiService.postData('', person);
     } catch (error) {
       console.error('Error saving person:', error);
     }
   }
 
-  filteredPeople() {
-    return this.people.filter(person => {
-      const matchesQuery = person.title.toLowerCase().includes(this.searchQuery.toLowerCase());
-      const matchesGender = this.selectedGender ? person.gender === this.selectedGender : true;
-      const matchesStatus = this.selectedStatus ? person.status === this.selectedStatus : true;
-      return matchesQuery && matchesGender && matchesStatus;
-    });
+  updatePerson() {
+    const index = this.people.findIndex(person => person.id === this.newPerson.id);
+    if (index !== -1) {
+      this.people[index] = { ...this.newPerson };
+      this.showAddUserForm = false;
+    }
   }
 
-  editPerson(person: any) {
+  filteredPeople() {
+    return this.people.filter(person =>
+      (this.searchQuery ? person.name.includes(this.searchQuery) : true) &&
+      (this.selectedGender ? person.gender === this.selectedGender : true) &&
+      (this.selectedStatus ? person.status === this.selectedStatus : true)
+    );
+  }
+
+  paginatedPeople() {
+    const start = (this.currentPage - 1) * this.rowsPerPage;
+    const end = start + this.rowsPerPage;
+    return this.filteredPeople().slice(start, end);
+  }
+
+  totalPages() {
+    return Math.ceil(this.filteredPeople().length / this.rowsPerPage);
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages()) {
+      this.currentPage++;
+    }
+  }
+
+  editPerson(person: Person) {
     this.newPerson = { ...person };
     this.showAddUserForm = true;
   }
@@ -82,10 +115,17 @@ export class Content1Component implements OnInit {
   resetForm() {
     this.newPerson = {
       id: '',
-      title: '',
-      body: '',
-      userId: 1
+      name: '',
+      address: '',
+      dni: '',
+      entryDate: new Date(),
+      gender: 'male',
+      status: 'active'
     };
     this.showAddUserForm = false;
+  }
+
+  updatePagination() {
+    // Si hay lógica adicional necesaria para actualizar la paginación, agrégala aquí
   }
 }

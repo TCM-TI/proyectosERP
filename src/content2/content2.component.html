@@ -2,7 +2,7 @@
   <h1>Inventario de Usuarios</h1>
 
   <!-- Botón para abrir el formulario emergente -->
-  <button (click)="openPopup()" class="add-person">Agregar un nuevo usuario</button>
+  <button (click)="togglePopup()" class="add-person">Agregar un nuevo usuario</button>
 
   <!-- Formulario emergente para agregar personas -->
   <div *ngIf="isPopupOpen" class="form-popup form-container">
@@ -10,11 +10,11 @@
     <form (ngSubmit)="addPerson()">
       <div class="form-group">
         <label for="popup-username">Nombre de Usuario:</label>
-        <input type="text" id="popup-username" [(ngModel)]="person.username" name="username" required />
+        <input type="text" id="popup-username" [(ngModel)]="person.username" name="username" required placeholder="Nombre de usuario"/>
       </div>
       <div class="form-group">
         <label for="popup-name">Nombre Completo:</label>
-        <input type="text" id="popup-name" [(ngModel)]="person.name" name="name" required />
+        <input type="text" id="popup-name" [(ngModel)]="person.name" name="name" required placeholder="Nombre y Apellido"/>
       </div>
       <div class="form-group">
         <label for="popup-status">Estado:</label>
@@ -30,51 +30,52 @@
           <label>{{ role }}</label>
         </div>
       </div>
-      <button type="submit" class="add-person-btn">Agregar Persona</button>
-      <button type="button" class="close-popup-btn" (click)="closePopup()">Cerrar</button>
+      <button type="submit" class="add-person-btn">Agregar Persona </button>
+      <button type="button" class="close-popup-btn" (click)="togglePopup()">Cerrar</button>
     </form>
   </div>
 
   <!-- Campo de búsqueda y filtros -->
   <div class="search-container">
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar personas por nombre..." />
+    <input type="text" [(ngModel)]="searchTerm" placeholder="🔍Buscar personas por nombre..." />
     <select [(ngModel)]="selectedStatus">
       <option value="">Todos los estados</option>
-      <option value="active">Activo</option>
-      <option value="inactive">Inactivo</option>
+      <option value="active">✓Activo</option>
+      <option value="inactive">✘Inactivo</option>
     </select>
-    <!--<div class="group-filter">
-      <label>Filtrar por Grupo:</label>
-      <select (change)="onGroupFilterChange($event)" multiple>
-        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
-      </select>
-    </div>-->
   </div>
 
   <!-- Lista de personas inventariadas -->
-  <div class="people-list">
-    <h2>Personas Inventariadas</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre de Usuario</th>
-          <th>Nombre</th>
-          <th>Estado</th>
-          <th>Grupo</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let person of filteredPeople(); let i = index">
-          <td>{{ person.id }}</td>
-          <td>{{ person.username }}</td>
-          <td>{{ person.name }}</td>
-          <td>{{ person.status }}</td>
-          <td>{{ person.group.join(', ') }}</td>
-          <td><button (click)="deletePerson(i)" class="delete-btn">Eliminar</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="people-list">
+  <h2>Personas Inventariadas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre de Usuario</th>
+        <th>Nombre</th>
+        <th>Estado</th>
+        <th>Grupo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of filteredPeople(); let i = index">
+        <td>{{ person.id }}</td>
+        <td>{{ person.username }}</td>
+        <td>{{ person.name }}</td>
+        <td>{{ person.status }}</td>
+        <td>{{ person.group.join(', ') }}</td>
+        <td>
+          <button (click)="editPerson(i)" class="edit-btn">
+            <img src="assets/icons/edit.svg" alt="Servers Icon" class="icon" /> 
+            Editar</button>
+          <button (click)="deletePerson(i)" class="delete-btn">
+            <img src="assets/icons/trash-2.svg" alt="Servers Icon" class="icon" /> 
+            Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>

@@ -7,4 +7,5 @@ export interface Person {
     entryDate: Date;
     gender: string;
     status: string;
+    email?: string;
   }

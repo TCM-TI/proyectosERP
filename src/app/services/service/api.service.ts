@@ -6,7 +6,7 @@ import axios, { AxiosResponse } from 'axios';
 })
 export class ApiService {
 
-  private baseURL = 'https://jsonplaceholder.typicode.com/users/1'; // URL base de JSONPlaceholder
+  private baseURL = 'https://jsonplaceholder.typicode.com/users'; // URL base de JSONPlaceholder
 
   constructor() { }
 

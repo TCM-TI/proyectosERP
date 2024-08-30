@@ -12,7 +12,7 @@ import { UserService } from '../app/services/user/user.service';
 })
 export class Content2Component {
   person: Person = {
-    id: 0, // Asignar un valor inicial
+    id: 0,
     username: '',
     name: '',
     status: 'active',
@@ -27,58 +27,82 @@ export class Content2Component {
   selectedStatus = '';
   selectedGroup: string[] = [];
   isPopupOpen = false;
-  people: Person[] = []; // Definir la propiedad `people`
+  people: Person[] = [];
+  isEditing = false;
+  editingIndex: number | null = null;
 
-  private nextId = 3; // ID inicial para el siguiente nuevo registro
+  private nextId = 3;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+    this.userService.getUsers().subscribe(users => this.people = users);
+  }
+
+  togglePopup() {
+    this.isPopupOpen = !this.isPopupOpen;
+    if (!this.isPopupOpen) {
+      this.resetForm();
+    }
+  }
 
   addPerson() {
     if (!this.person.username || !this.person.name || !this.person.status || this.person.group.length === 0) {
       alert('Por favor, completa todos los campos.');
       return;
     }
-  
+
     if (!this.validateUsername(this.person.username)) {
       alert('El nombre de usuario no es válido.');
       return;
     }
-  
-    if (this.validateName(this.person.name) && this.person.username && this.person.status && this.person.group.length > 0) {
-      this.person.id = this.nextId++;
-      this.userService.addUser(this.person);
-      this.people.push(this.person);
-      this.person = { id: 0, username: '', name: '', status: 'active', group: [] };
-      this.closePopup();
+
+    if (this.validateName(this.person.name)) {
+      if (this.isEditing && this.editingIndex !== null) {
+        // Actualizar persona existente
+        const updatedPerson = { ...this.person };
+        this.people[this.editingIndex] = updatedPerson; // Actualizar la persona en la lista
+        this.userService.updateUser(updatedPerson); // Actualizar en el servicio
+        this.isEditing = false;
+        this.editingIndex = null;
+      } else {
+        // Agregar nueva persona
+        const newPerson = { ...this.person, id: this.nextId++ };
+        this.userService.addUser(newPerson); // Agregar en el servicio
+        this.people.push(newPerson);
+      }
+      this.resetForm();
+      this.togglePopup();
     } else {
       alert('Por favor, completa todos los campos correctamente.');
     }
-  
-    this.person.id = this.nextId++;
-    this.userService.addUser(this.person);
-    this.people.push({...this.person}); // Crear una copia del objeto para evitar referencias compartidas
-    this.person = { id: 0, username: '', name: '', status: 'active', group: [] };
-    this.closePopup();
   }
-  
+
+  deletePerson(index: number) {
+    if (index >= 0 && index < this.people.length) {
+      const personId = this.people[index].id;
+      this.people.splice(index, 1); // Eliminar de la lista local
+      this.userService.deleteUser(personId); // Eliminar del servicio
+    } else {
+      alert('Índice fuera de rango.');
+    }
+  }
+
+  editPerson(index: number) {
+    this.person = { ...this.people[index] };
+    this.editingIndex = index;
+    this.isEditing = true;
+    this.togglePopup();
+  }
+
   validateUsername(username: string): boolean {
-    // Ejemplo de validación: El nombre de usuario debe tener al menos 3 caracteres y no debe contener caracteres especiales
     const usernamePattern = /^[a-zA-Z0-9_]{3,}$/;
     return usernamePattern.test(username);
   }
-  
+
   validateName(name: string): boolean {
-    // Expresión regular que permite solo letras y espacios
     const namePattern = /^[a-zA-Z]+(?: [a-zA-Z]+)+$/;
-    
-    // Limitar longitud del nombre
     const minLength = 2;
     const maxLength = 50;
-  
-    // Eliminar espacios en blanco al principio y al final
     const trimmedName = name.trim();
-  
-    // Verificar longitud y formato del nombre
     return (
       trimmedName.length >= minLength &&
       trimmedName.length <= maxLength &&
@@ -86,28 +110,12 @@ export class Content2Component {
     );
   }
 
-  deletePerson(index: number) {
-    if (index >= 0 && index < this.people.length) {
-      this.people.splice(index, 1);
-    } else {
-      alert('Índice fuera de rango.');
-    }
-  }
-
-  openPopup() {
-    this.isPopupOpen = true;
-  }
-
-  closePopup() {
-    this.isPopupOpen = false;
-  }
-
   filteredPeople() {
     const lowerSearchTerm = this.searchTerm.toLowerCase();
     return this.people.filter((person: Person) =>
-      (person.id.toString().includes(lowerSearchTerm) || // Buscar por ID
-      person.username.toLowerCase().includes(lowerSearchTerm) || // Buscar por nombre de usuario
-      person.name.toLowerCase().includes(lowerSearchTerm)) && // Buscar por nombre
+      (person.id.toString().includes(lowerSearchTerm) ||
+      person.username.toLowerCase().includes(lowerSearchTerm) ||
+      person.name.toLowerCase().includes(lowerSearchTerm)) &&
       (this.selectedStatus ? person.status === this.selectedStatus : true) &&
       (this.selectedGroup.length > 0 ? person.group.some((role: string) => this.selectedGroup.includes(role)) : true)
     );
@@ -125,6 +133,10 @@ export class Content2Component {
   onGroupFilterChange(event: any) {
     const selectedOptions = Array.from(event.target.selectedOptions) as HTMLOptionElement[];
     this.selectedGroup = selectedOptions.map(option => option.value);
+  }
+
+  resetForm() {
+    this.person = { id: 0, username: '', name: '', status: 'active', group: [] };
   }
 }
 

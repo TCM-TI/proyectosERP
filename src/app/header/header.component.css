@@ -1,7 +1,173 @@
-.cabecera {
-    background-color: #2980b9;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    z-index: 1000;
+.header-dark {
+  background: #222; /* Color de fondo oscuro */
+  background-size: cover;
+  padding-top: 20px; /* Espacio interno superior del header */
+  padding-bottom: 20px; /* Espacio interno inferior del header */
+  color: #ddd; /* Color de texto claro para contraste */
+  height: 80px; /* Altura fija del header */
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
+@media (min-width: 768px) {
+  .header-dark {
+    padding-top: 15px; /* Ajusta el espacio interno superior en pantallas grandes */
+    padding-bottom: 15px; /* Ajusta el espacio interno inferior en pantallas grandes */
   }
+}
+
+.header-dark .navbar {
+  background: transparent;
+  padding-top: 0; /* Espacio interno superior del navbar */
+  padding-bottom: 0; /* Espacio interno inferior del navbar */
+  color: #ddd; /* Color de texto claro */
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .header-dark .navbar {
+    padding-bottom: 0; /* Ajusta el espacio interno inferior en pantallas grandes */
+  }
+}
+
+.header-dark .navbar .navbar-brand {
+  font-family: 'Mano Imprenta', Brush Script MT; /* Aplica la fuente Mano Imprenta */
+  font-weight: bold;
+  color: #fff; /* Color de la marca/logo */
+  font-size: 28px; /* Ajusta el tamaño del texto de la marca/logo */
+}
+
+.header-dark .navbar .navbar-brand:hover {
+  color: #1b6a58; /* Color del texto al pasar el ratón sobre la marca/logo */
+}
+
+.header-dark .navbar .navbar-collapse span {
+  margin-top: 5px;
+}
+
+.header-dark .navbar .navbar-collapse span .login {
+  color: #10646d;
+  margin-right: .5rem;
+  text-decoration: none;
+}
+
+.header-dark .navbar .navbar-collapse span .login:hover {
+  color: #fff; /* Color del texto de login al pasar el ratón */
+}
+
+.header-dark .navbar .navbar-toggler {
+  border-color: #747474; /* Color del borde del botón de toggle */
+}
+
+.header-dark .navbar .navbar-toggler:hover, .header-dark .navbar .navbar-toggler:focus {
+  background: none;
+}
+
+.header-dark .navbar .navbar-toggler {
+  color: #eee; /* Color del texto del botón de toggle */
+}
+
+.header-dark .navbar .navbar-collapse, .header-dark .navbar .form-inline {
+  border-color: #636363; /* Color del borde de la barra de búsqueda y formulario */
+}
+
+@media (min-width: 992px) {
+  .header-dark .navbar.navbar .navbar-nav .nav-link {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+}
+
+.header-dark .navbar.navbar-dark .navbar-nav .nav-link {
+  color: #d9d9d9; /* Color del texto de los enlaces del navbar */
+}
+
+.header-dark .navbar.navbar-dark .navbar-nav .nav-link:focus, .header-dark .navbar.navbar-dark .navbar-nav .nav-link:hover {
+  color: #fcfeff !important; /* Color del texto de los enlaces al pasar el ratón o enfocar */
+  background-color: transparent;
+}
+
+.header-dark .navbar .navbar-nav > li > .dropdown-menu {
+  margin-top: -5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+  background-color: #333; /* Color de fondo de los menús desplegables */
+  border-radius: 2px;
+}
+
+.header-dark .navbar .dropdown-menu .dropdown-item:focus, .header-dark .navbar .dropdown-menu .dropdown-item {
+  line-height: 2;
+  font-size: 14px;
+  color: #ddd; /* Color del texto de los elementos del dropdown */
+}
+
+.header-dark .navbar .dropdown-menu .dropdown-item:focus, .header-dark .navbar .dropdown-menu .dropdown-item:hover {
+  background: #444; /* Color de fondo de los elementos del dropdown al pasar el ratón o enfocar */
+}
+
+.header-dark .navbar .action-button, .header-dark .navbar .action-button:active {
+  background: #208f8f;
+  border-radius: 20px;
+  font-size: inherit;
+  color: #fff;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+  padding: .5rem .8rem;
+  transition: background-color 0.25s;
+}
+
+.header-dark .navbar .action-button:hover {
+  background: #269d9d;
+}
+
+.header-dark .navbar .form-inline label {
+  color: #ccc; /* Color de las etiquetas en el formulario de búsqueda */
+}
+
+.header-dark .navbar .form-inline .search-field {
+  display: inline-block;
+  width: 80%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  color: #ccc; /* Color del texto de la barra de búsqueda */
+  box-shadow: none;
+  color: inherit;
+  transition: border-bottom-color 0.3s;
+}
+
+.header-dark .navbar .form-inline .search-field:focus {
+  border-bottom: 1px solid #ccc; /* Color del borde de la barra de búsqueda al enfocar */
+}
+
+.header-dark .hero {
+  margin-top: 60px;
+}
+
+@media (min-width: 768px) {
+  .header-dark .hero {
+    margin-top: 20px;
+  }
+}
+
+.header-dark .hero h1 {
+  color: #fff; /* Color del texto del encabezado */
+  font-family: 'Bitter', serif;
+  font-size: 40px;
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .header-dark .hero h1 {
+    margin-bottom: 50px;
+    line-height: 1.5;
+  }
+}
+
+.header-dark .hero .embed-responsive iframe {
+  background-color: #666;
+}

@@ -2,7 +2,7 @@
 .inventory-container {
     padding: 20px;
     background-color: #333; /* Color de fondo oscuro para el contenedor */
-    color: #fff; /* Color de texto blanco */
+    color: #ffffff; /* Texto blanco para contraste */
     border-radius: 10px; /* Radios de borde sutiles */
     max-width: calc(100% - 250px); /* Ajusta el ancho menos el sidebar */
     margin: 0; /* Quita los márgenes para ajustarse al límite */
@@ -34,6 +34,10 @@
     border-top: 1px solid #555; /* Línea de separación */
     margin-top: 20px; /* Espacio superior para separación */
     padding-top: 20px; /* Espacio superior dentro del contenedor de búsqueda */
+}
+h1{
+    font-family: 'Mano Imprenta', Brush Script MT; /* Aplica la fuente Mano Imprenta */
+    color: #0096a4; /* Texto blanco para contraste */
 }
 
 /* Estilo para el campo de búsqueda y filtros */
@@ -74,6 +78,7 @@
 }
 
 /* Estilo para el formulario emergente */
+/* Estilo para el formulario emergente */
 .form-popup {
     position: fixed;
     top: 50%;
@@ -81,10 +86,14 @@
     transform: translate(-50%, -50%);
     background-color: #444; /* Fondo oscuro para el formulario */
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px; /* Radios de borde más sutiles para un aspecto rectangular */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el formulario */
-    width: 300px;
+    width: 1000px; /* Ancho más amplio para un diseño rectangular */
+    max-width: 90vw; /* Asegura que el formulario no sea demasiado ancho en pantallas pequeñas */
+    height: 500px; /* Altura fija para darle un aspecto rectangular */
     z-index: 1000; /* Asegura que el formulario emergente esté sobre otros elementos */
+    box-sizing: border-box; /* Incluye el padding en el ancho y alto total */
+    overflow-y: auto; /* Permite scroll si el contenido es demasiado alto */
 }
 
 /* Estilo para el título del formulario emergente */
@@ -176,3 +185,41 @@ th, td {
 th {
     background-color: #444; /* Fondo oscuro para los encabezados */
 }
+
+/* Estilo básico para los botones */
+.edit-btn, .delete-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem; /* Tamaño del padding */
+    font-size: 14px; /* Tamaño de la fuente */
+    font-weight: 400; /* Peso de la fuente */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    border: 1px solid transparent; /* Borde transparente para evitar desplazamientos */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano al pasar el ratón */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para cambios de color */
+  }
+  
+  /* Estilo para el botón de "Editar" */
+  .edit-btn {
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Texto blanco */
+    border: 1px solid #4CAF50; /* Borde verde */
+  }
+  
+  .edit-btn:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el ratón */
+    border-color: #45a049; /* Borde verde más oscuro */
+  }
+  
+  /* Estilo para el botón de "Eliminar" */
+  .delete-btn {
+    background-color: #f44336; /* Rojo */
+    color: white; /* Texto blanco */
+    border: 1px solid #f44336; /* Borde rojo */
+  }
+  
+  .delete-btn:hover {
+    background-color: #e53935; /* Rojo más oscuro al pasar el ratón */
+    border-color: #e53935; /* Borde rojo más oscuro */
+  }

@@ -1,20 +1,38 @@
-<aside class="sidebar bg-light p-3">
-  <button class="btn btn-primary w-100 mb-4" (click)="toggleMenu()">☰</button>
-  <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="content4" routerLinkActive="active">Servers</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="content2" routerLinkActive="active">Usuarios</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="content3" routerLinkActive="active">Sucursales</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="content1" routerLinkActive="active">Empleados</a>
-    </li>
-  </ul>
-  <div class="mt-auto">
-    <a class="btn btn-danger w-100" routerLink="/login" routerLinkActive="active">Logout</a>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+      <!-- Sidebar -->
+      <aside class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark sidebar">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                  <span class="fs-5 d-none d-sm-inline">Menu</span>
+              </a>
+              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                  <li class="nav-item">
+                      <a class="nav-link align-middle px-0" routerLink="content4" routerLinkActive="active">
+                          <img src="assets/icons/server.svg" alt="Servers Icon" class="icon" /> <span class="ms-1 d-none d-sm-inline">Servers</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link align-middle px-0" routerLink="content2" routerLinkActive="active">
+                        <img src="assets/icons/users.svg" alt="Servers Icon" class="icon" /> <span class="ms-1 d-none d-sm-inline">Usuarios</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link align-middle px-0" routerLink="content3" routerLinkActive="active">
+                        <img src="assets/icons/codepen.svg" alt="Servers Icon" class="icon" /> <span class="ms-1 d-none d-sm-inline">Sucursales</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link align-middle px-0" routerLink="content1" routerLinkActive="active">
+                        <img src="assets/icons/user.svg" alt="Servers Icon" class="icon" /> <span class="ms-1 d-none d-sm-inline">Empleados</span>
+                      </a>
+                  </li>
+              </ul>
+              <hr>
+              <div class="mt-auto w-100">
+                  <a class="btn btn-danger w-100" routerLink="/login" routerLinkActive="active">Logout</a>
+              </div>
+          </div>
+      </aside>
   </div>
-</aside>
+</div>
